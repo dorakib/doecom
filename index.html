@@ -10,43 +10,76 @@
             font-family: Arial, sans-serif;
             background-color: #6C33CF;
             color: white;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
         }
 
         .container {
-            text-align: center;
-            max-width: 900px;
+            max-width: 1200px;
             width: 100%;
             padding: 20px;
             position: relative;
         }
 
+        /* Header with logo and buttons */
         .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 50px;
         }
 
         .header img {
-            max-width: 100%;
-            height: auto;
+            max-width: 150px;
         }
 
-        .header h1 {
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .buttons a {
+            text-decoration: none;
+            color: white;
+            background-color: #8E54E9;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+
+        .buttons a:hover {
+            background-color: #a86cd5;
+        }
+
+        /* Main content */
+        .main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+        }
+
+        .main-left {
+            flex: 1;
+        }
+
+        .main-left h1 {
             font-size: 3em;
             margin: 20px 0 10px;
         }
 
-        .header p {
+        .main-left p {
             font-size: 1.2em;
             margin-top: 0;
         }
 
-        .cards {
+        .main-right {
             display: flex;
-            justify-content: space-around;
-            margin-top: 40px;
+            gap: 20px;
         }
 
         .card {
@@ -68,49 +101,114 @@
             object-fit: contain;
         }
 
-        .buttons {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-        }
-
-        .buttons a {
-            text-decoration: none;
-            color: white;
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
             background-color: #8E54E9;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            margin-left: 10px;
-            transition: background-color 0.3s ease;
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            padding: 10px;
+            border-radius: 8px;
         }
 
-        .buttons a:hover {
-            background-color: #a86cd5;
+        .mobile-menu a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-bottom: 1px solid #a86cd5;
         }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            background-color: #8E54E9;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5em;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header {
+                justify-content: center;
+            }
+
+            .buttons {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .main {
+                flex-direction: column;
+            }
+
+            .main-left, .main-right {
+                text-align: center;
+            }
+
+            .main-right {
+                flex-direction: column;
+            }
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Header with logo and buttons -->
         <div class="header">
             <img src="images/logo.png" alt="Porter Logo">
-            <h1>Carrying You To Success.</h1>
-            <p>Porter is the industry leader in proxies for exclusive product releases.</p>
+            <div class="buttons">
+                <a href="#">Purchase Plan</a>
+                <a href="#">Log In</a>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">&#9776;</button>
         </div>
 
-        <div class="cards">
-            <div class="card">
-                <img src="images/chart.png" alt="Graph">
-            </div>
-            <div class="card">
-                <img src="images/radar.png" alt="Radar">
-            </div>
-        </div>
-
-        <div class="buttons">
+        <div class="mobile-menu" id="mobileMenu">
             <a href="#">Purchase Plan</a>
             <a href="#">Log In</a>
         </div>
+
+        <!-- Main content -->
+        <div class="main">
+            <div class="main-left">
+                <h1>Carrying You To Success.</h1>
+                <p>Porter is the industry leader in proxies for exclusive product releases.</p>
+            </div>
+            <div class="main-right">
+                <div class="card">
+                    <img src="images/chart.png" alt="Graph">
+                </div>
+                <div class="card">
+                    <img src="images/radar.png" alt="Radar">
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+    </script>
 </body>
 </html>
