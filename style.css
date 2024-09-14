@@ -1,0 +1,92 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo img {
+  width: 150px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.intro {
+  display: flex;
+  justify-content: space-between;
+  padding: 100px;
+}
+
+.text-left {
+  max-width: 40%;
+  text-align: left;
+}
+
+.chart-radar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.chart {
+  margin-right: 10px;
+}
+
+.radar {
+  margin-left: 10px;
+}
+
+/* Mobile Version */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+  }
+
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 24px;
+  }
+
+  .menu-toggle.active + ul {
+    display: flex;
+  }
+
+  .intro {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text-left, .chart-radar {
+    max-width: 100%;
+  }
+
+  .chart-radar {
+    flex-direction: column;
+  }
+
+  .chart, .radar {
+    margin: 0;
+    padding: 10px 0;
+  }
+}
